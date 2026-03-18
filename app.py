@@ -7,6 +7,14 @@ import gradio as gr
 from dotenv import load_dotenv
 from chain import build_chain
 
+import subprocess
+from pathlib import Path
+
+chroma_dir = Path(__file__).resolve().parent / "data" / "chroma"
+if not chroma_dir.exists() or not any(chroma_dir.iterdir()):
+    print("[app] No index found — running ingestion...")
+    subprocess.run(["python", "src/ingest.py"], check=True)
+
 load_dotenv()
 
 print("[app] Initializing RAG chain...")
