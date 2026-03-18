@@ -10,6 +10,14 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from retriever import HybridRetriever, build_retriever, RERANK_TOP_K
 
+import subprocess
+from pathlib import Path
+
+chroma_dir = Path(__file__).resolve().parent / "data" / "chroma"
+if not chroma_dir.exists() or not any(chroma_dir.iterdir()):
+    print("[app] No index found — running ingestion...")
+    subprocess.run(["python", "src/ingest.py"], check=True)
+
 load_dotenv()
 
 ROOT     = Path(__file__).resolve().parent.parent
