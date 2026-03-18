@@ -1,14 +1,3 @@
----
-title: FDA Drug Label RAG
-emoji: 💊
-colorFrom: blue
-colorTo: green
-sdk: gradio
-sdk_version: 4.0.0
-app_file: app.py
-pinned: false
----
-
 # FDA Drug Label Clinical Query System
 
 A retrieval-augmented generation (RAG) system for querying FDA-approved drug labels using natural language. Designed to support clinical prescribing decisions by surfacing contraindications, warnings, drug interactions, and dosing considerations from official FDA label content.
